@@ -14,36 +14,40 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("This is appbar"),
+        centerTitle: true,
       ),
       body: Center(
-        child: InkWell(
-          onTap: () async {
-            setState(() {
-              Changebutton = true;
-            });
-            await Future.delayed(Duration(seconds: 1));
-            Navigator.pushNamed(context, MyRouts.LoginRout);
-          },
-          child: AnimatedContainer(
-            duration: const Duration(seconds: 1),
-            height: 50,
-            width: Changebutton ? 50 : 150,
-            child: Changebutton
-                ? const Icon(
-                    Icons.done,
-                    color: Colors.white,
-                  )
-                : const Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 20,
+        child: Material(
+          borderRadius: BorderRadius.circular(Changebutton ? 50 : 8),
+          color: Colors.deepPurple,
+          child: InkWell(
+            onTap: () async {
+              setState(() {
+                Changebutton = true;
+              });
+              await Future.delayed(Duration(seconds: 1));
+              await Navigator.pushNamed(context, MyRouts.LoginRout);
+              setState(() {
+                Changebutton = false;
+              });
+            },
+            child: AnimatedContainer(
+              duration: const Duration(seconds: 1),
+              height: 50,
+              width: Changebutton ? 50 : 150,
+              child: Changebutton
+                  ? const Icon(
+                      Icons.done,
                       color: Colors.white,
+                    )
+                  : const Text(
+                      'Login',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Changebutton ? 50 : 8),
-              color: Colors.deepPurple,
+              alignment: Alignment.center,
             ),
           ),
         ),
