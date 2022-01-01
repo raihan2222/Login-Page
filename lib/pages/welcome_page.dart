@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'utils/routes.dart';
+import 'package:login_project/utils/routes.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({Key? key}) : super(key: key);
